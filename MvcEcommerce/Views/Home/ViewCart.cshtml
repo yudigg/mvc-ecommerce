@@ -1,0 +1,35 @@
+﻿@using Ecommerce.Data
+@model List<CartItem>
+
+@{
+    Layout = "~/Views/Shared/ItemLayoutPage.cshtml";
+}
+
+<h2>ViewCart</h2>
+@if (Model.Count > 0)
+{
+    @*<h2>Created on @Model</h2>*@
+    @*<h2>Total Price : @Model</h2>*@
+    foreach (CartItem c in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <h3><a href="/home/shopItem">@c.Product.Name</a></h3>
+                <img src="/Uploads/@c.Product.Images.First().FileName" alt=""style="width:80px;height:80px;">
+                <div class="caption">
+                    <h4 class="pull-right">@c.Product.Price</h4>
+                    <h4>
+                     Quantity : @c.Quantity
+                    </h4>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <h4>No items currently in your cart -- Lets Go!!!</h4>
+}
+@section scripts{
+<script src="~/Content/themes/cartpg.js"></script>
+    }

@@ -1,0 +1,43 @@
+categorys
+id
+name
+
+products
+id
+catgoryid
+name
+short description
+long description
+price
+
+images
+filename
+productid
+
+admins
+id
+?username
+passwordhash
+salt
+
+ShoppingCart
+Id
+date
+
+cartItems
+Id
+shoppingcartid
+productid
+quantity
+
+shoppingcartid in cookie,login for admins
+addtocart use json to change # in cart after post finishes
+		finish view cart
+		finish login 
+		add category btn
+
+Avrumi at February 24th 2016, 12:41:55 pm
+button loading - http://jsbin.com/hicoloxadu/edit?html,js,output
+
+old bin( https://jsbin.com/rofonirana/edit?html,js,output )
+load options https://msdn.microsoft.com/en-us/library/bb534268(v=vs.110).aspx

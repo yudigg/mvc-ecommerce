@@ -1,0 +1,35 @@
+﻿@using Ecommerce.Data
+@model IEnumerable<Category>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 well">
+        <h1>New Product</h1>
+        <form method="POST" action="/admins/uploadNew" enctype="multipart/form-data" class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="Name" />
+            <input type="text" name="price" class="form-control" placeholder="Price" />
+            <input type="text" name="shortDescription" class="form-control" placeholder="Short Description" />
+
+            <textarea name="longDescription" class="form-control" cols="20" rows="10" placeholder="Long Description"></textarea>
+
+            <select name="categoryid" required>
+                <option selected="selected" disabled="disabled">Select a Category</option>
+               
+                @foreach (Category c in Model)
+                {
+                    <option value="@c.Id">@c.Name</option>                    
+                }
+              
+              
+            </select>
+            <br />
+            <br />
+            <input type="file" name="images[0]" />
+            <input type="file" name="images[1]" />
+            <input type="file" name="images[2]" />
+            <input type="file" name="images[3]" />
+            <input type="file" name="images[4]" />
+            <br />
+            <button class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</div>

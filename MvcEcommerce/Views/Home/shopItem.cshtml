@@ -1,0 +1,64 @@
+﻿@using Ecommerce.Data
+
+@model MvcEcommerce.Models.IndexViewModel
+@{
+    Layout = "~/Views/Shared/ItemLayoutPage.cshtml";
+}
+@section css{
+<link href="/Content/Site.css" rel="stylesheet" />
+}
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <p class="lead">Shop Name</p>
+            <div class="list-group">
+                @foreach (Category c in Model.Categories)
+                {
+                    if (Model.CategoryId == c.Id)
+                    {
+                        <a href="/home/ShopHomePage?catId=@c.Id" class="list-group-item active">@c.Name</a>
+                    }
+                    else
+                    {
+                        <a href="/home/ShopHomePage?catId=@c.Id" class="list-group-item ">@c.Name</a>
+                    }
+                }
+               
+            </div>
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="thumbnail">
+                <img class="img-responsive" src="/Uploads/@Model.Product.Images.First().FileName" alt=""style="height:300px;width:800px;">
+                <div class="caption-full">
+                    <h4 class="pull-right">@Model.Product.Price.ToString("c")</h4>
+                    <h4>
+                        <a href="#">@Model.Product.Name</a>
+                    </h4>
+                    <p>@Model.Product.ShortDescription.</p>
+                    <p>
+                       @Model.Product.LongDescription.
+                    </p>
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                   <lead>Quantity</lead>
+                        <input type="number"min="0" id="quantity" value="1" style="width:50px;"/>
+                        <br />
+                        <button class="btn btn-lg btn-primary btn-outline" id="addtocart" data-loading-text="Submiting...">
+                            Add To Cart
+                        </button>
+                        <input type="hidden"id="productid" value="@Model.Product.Id"/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+<script src="~/Scripts/itemPage.js"></script>
+}
