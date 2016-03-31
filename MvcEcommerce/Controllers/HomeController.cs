@@ -53,8 +53,12 @@ namespace MvcEcommerce.Controllers
             }
             ShoppingCartRepository cartrepo = new ShoppingCartRepository(Properties.Settings.Default.Constr);
             int idValue = 0;
-            if (Request.Cookies["cartid"] != null && )
+            if (Request.Cookies["cartid"] != null)
             {
+                //delete cookie
+                //HttpCookie myCookie = new HttpCookie("cartid");
+                //myCookie.Expires = DateTime.Now.AddDays(-1d);
+                //Response.Cookies.Add(myCookie);
                 idValue = int.Parse(Request.Cookies["cartid"].Value);
             }
             else 
@@ -69,8 +73,8 @@ namespace MvcEcommerce.Controllers
                  idValue = int.Parse(Request.Cookies["cartid"].Value);
             }
 
-            CartItem c = new CartItem { ProductId = pid, ShoppingCartId = idValue, Quantity = quantity };
-            cartrepo.AddCartItems(c);          
+            //CartItem c = new CartItem { ProductId = pid, ShoppingCartId = idValue, Quantity = quantity };
+            //cartrepo.AddCartItems(c);          
         }
         public ActionResult ViewCart()
         {
