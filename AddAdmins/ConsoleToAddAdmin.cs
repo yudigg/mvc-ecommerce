@@ -7,7 +7,7 @@ using Ecommerce.Data;
 
 namespace AddAdmins
 {
-    class Program
+    class ConsoleToAddAdmin
     {
         static void Main(string[] args)
         {
