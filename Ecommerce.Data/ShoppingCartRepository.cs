@@ -14,7 +14,7 @@ namespace Ecommerce.Data
         {
             _connectionString = connection;
         }
-        ///needs more work
+        ///needs more work - done;
         public List<CartItem>GetCartItemsByShoppingCartId(int id)
         {
             using (var dc = new EcommerceDataContext(_connectionString))
@@ -34,7 +34,7 @@ namespace Ecommerce.Data
                 options.LoadWith<CartItem>(cartItem => cartItem.Product);
                 options.LoadWith<Product>(product => product.Images);
                 dc.LoadOptions = options;
-                return dc.CartItems.AsEnumerable().Sum(c => c.Quantity);
+                return dc.CartItems.AsEnumerable().Where(c => c.ShoppingCartId == id).Sum(c => c.Quantity);////
             }
         }
      

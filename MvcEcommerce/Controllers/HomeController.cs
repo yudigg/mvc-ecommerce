@@ -26,7 +26,6 @@ namespace MvcEcommerce.Controllers
             else
             {
                 vm.Products = repo.GetProductsByCategory(catId);
-                vm.Categories = repo.GetAllCategories();
                 vm.CategoryId = catId.Value;
             }
         
@@ -63,18 +62,16 @@ namespace MvcEcommerce.Controllers
             }
             else 
             {
-
                 ShoppingCart s = new ShoppingCart();
                 s.Date = DateTime.Now;
                 cartrepo.AddNewShopCart(s);
                 idValue = s.Id;
                 HttpCookie cookie = new HttpCookie("cartid", idValue.ToString());
                 Response.Cookies.Add(cookie);
-                 idValue = int.Parse(Request.Cookies["cartid"].Value);
             }
 
-            //CartItem c = new CartItem { ProductId = pid, ShoppingCartId = idValue, Quantity = quantity };
-            //cartrepo.AddCartItems(c);          
+            CartItem c = new CartItem { ProductId = pid, ShoppingCartId = idValue, Quantity = quantity };
+            cartrepo.AddCartItems(c);
         }
         public ActionResult ViewCart()
         {

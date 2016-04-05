@@ -17,7 +17,7 @@
                 <h3><a href="/home/shopItem">@c.Product.Name</a></h3>
                 <img src="/Uploads/@c.Product.Images.First().FileName" alt=""style="width:80px;height:80px;">
                 <div class="caption">
-                    <h4 class="pull-right">@c.Product.Price</h4>
+                    <h4 class="pull-right">@c.Product.Price.ToString("c")</h4>
                     <h4>
                      Quantity : @c.Quantity
                     </h4>

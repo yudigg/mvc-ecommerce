@@ -31,7 +31,7 @@ namespace AddAdmins
             }
 
             Console.WriteLine();
-            //addadmin
+            //add admin
             Admin admin = mgr.GetAdmin(username, password);
             if (admin != null)
             {
